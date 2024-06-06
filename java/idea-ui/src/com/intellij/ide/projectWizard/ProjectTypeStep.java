@@ -123,7 +123,7 @@ public final class ProjectTypeStep extends ModuleWizardStep implements SettingsS
     myProjectTypeList.installFilteringListModel(getNamer(), getEmptyStatusPresenter());
     // These "fill" methods are stateful. The "fillGroupTemplateMap" method reads and modifies the "myTemplatesMap".
     myProjectTypeList.setTemplateGroupItems(fillGroupTemplateMap(context));
-    myProjectTypeList.setLanguageGeneratorItems(fillLanguageGeneratorTemplateMap(context));
+    //myProjectTypeList.setLanguageGeneratorItems(fillLanguageGeneratorTemplateMap(context));
     myProjectTypeList.setUserTemplateGroupItems(fillUserTemplateMap(context));
     installLanguageGeneratorWatcher(context);
 

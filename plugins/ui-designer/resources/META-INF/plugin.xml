@@ -226,6 +226,7 @@
       <add-to-group anchor="after" group-id="GenerateGroup" relative-to-action="GenerateSuperMethodCall"/>
     </action>
 
+    <!--
     <group id="GuiDesigner.NewActions" popup="true" icon="AllIcons.FileTypes.UiForm">
       <separator/>
       <action id="NewForm" class="com.intellij.uiDesigner.actions.CreateFormAction"/>
@@ -233,5 +234,6 @@
 
       <add-to-group group-id="NewGroup" anchor="last"/>
     </group>
+    -->
   </actions>
 </idea-plugin>

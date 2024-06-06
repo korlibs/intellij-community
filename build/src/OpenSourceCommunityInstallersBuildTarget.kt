@@ -2,8 +2,11 @@
 import com.intellij.platform.diagnostic.telemetry.helpers.useWithScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import org.jetbrains.intellij.build.*
+import org.jetbrains.intellij.build.BuildOptions
 import org.jetbrains.intellij.build.TraceManager.spanBuilder
+import org.jetbrains.intellij.build.buildCommunityStandaloneJpsBuilder
+import org.jetbrains.intellij.build.createBuildTasks
+import org.jetbrains.intellij.build.createCommunityBuildContext
 import org.jetbrains.intellij.build.impl.buildDistributions
 
 object OpenSourceCommunityInstallersBuildTarget {
@@ -16,7 +19,7 @@ object OpenSourceCommunityInstallersBuildTarget {
       // do not bother external users about clean/incremental
       // just remove out/ directory for clean build
       incrementalCompilation = true
-      useCompiledClassesFromProjectOutput = false
+      useCompiledClassesFromProjectOutput = true
       buildStepsToSkip += BuildOptions.MAC_SIGN_STEP
     }
 

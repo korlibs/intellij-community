@@ -34,19 +34,19 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
     )
   }
 
-  override val baseFileName: String
-    get() = "idea"
+  override val baseFileName: String get() = "korge"
 
   init {
     platformPrefix = "Idea"
+    //platformPrefix = "Korge"
     applicationInfoModule = "intellij.idea.community.customization"
-    additionalIDEPropertiesFilePaths = persistentListOf(communityHomeDir.resolve("build/conf/ideaCE.properties"))
+    additionalIDEPropertiesFilePaths = persistentListOf(communityHomeDir.resolve("build/conf/KorgeForge.properties"))
     toolsJarRequired = true
     scrambleMainJar = false
     useSplash = true
     buildCrossPlatformDistribution = true
 
-    /* main module for JetBrains Client isn't available in the intellij-community project, 
+    /* main module for JetBrains Client isn't available in the intellij-community project,
        so this property is set only when IDEA CE is built from the intellij-ultimate project. */
     embeddedJetBrainsClientMainModule = null
 
@@ -55,14 +55,16 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
       "intellij.idea.community.customization",
     )
     productLayout.bundledPluginModules = IDEA_BUNDLED_PLUGINS
-      .addAll(listOf("intellij.javaFX.community", "intellij.vcs.github.community"))
+      .addAll(listOf(
+        "intellij.vcs.github.community",
+        //"intellij.korgeforge",
+      ))
       .toMutableList()
 
     productLayout.prepareCustomPluginRepositoryForPublishedPlugins = false
     productLayout.buildAllCompatiblePlugins = false
     productLayout.pluginLayouts = CommunityRepositoryModules.COMMUNITY_REPOSITORY_PLUGINS.addAll(listOf(
       JavaPluginLayout.javaPlugin(),
-      CommunityRepositoryModules.androidPlugin(allPlatforms = true),
       CommunityRepositoryModules.groovyPlugin(),
       CommunityRepositoryModules.githubPlugin("intellij.vcs.github.community"),
     ))
@@ -81,6 +83,7 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
 
     versionCheckerConfig = CE_CLASS_VERSIONS
     baseDownloadUrl = "https://download.jetbrains.com/idea/"
+    //baseDownloadUrl = "https://forge.korge.org/download/"
     buildDocAuthoringAssets = true
 
     additionalVmOptions += "-Dide.show.tips.on.startup.default.value=false"
@@ -93,14 +96,22 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
     copyFileToDir(context.paths.communityHomeDir.resolve("NOTICE.txt"), targetDir)
 
     copyDir(
-      sourceDir = context.paths.communityHomeDir.resolve("build/conf/ideaCE/common/bin"),
+      sourceDir = context.paths.communityHomeDir.resolve("build/conf/KorgeForge/common/bin"),
       targetDir = targetDir.resolve("bin"),
     )
     bundleExternalPlugins(context, targetDir)
   }
 
+  override fun getAdditionalPluginPaths(context: BuildContext): List<Path> {
+    return listOf(
+      //context.paths.projectHome.resolve("../korge-forge-plugin/build/distributions/KorgePlugin.zip")
+      context.paths.projectHome.resolve("../korge-forge-plugin/build/distributions/KorgePlugin/KorgePlugin")
+    )
+  }
+
   protected open fun bundleExternalPlugins(context: BuildContext, targetDirectory: Path) {
     //temporary unbundle VulnerabilitySearch
+    //com.intellij.util.io.Decompressor.Zip(File(context.paths.projectHome.toFile(), "../korge-forge-plugin/build/distributions/KorgePlugin.zip")).extract(targetDirectory.resolve("plugins"))
     //ExternalPluginBundler.bundle('VulnerabilitySearch',
     //                             "$buildContext.paths.communityHome/build/dependencies",
     //                             buildContext, targetDirectory)
@@ -112,32 +123,30 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
 
   protected open inner class CommunityWindowsDistributionCustomizer : WindowsDistributionCustomizer() {
     init {
-      icoPath = "${communityHomeDir}/build/conf/ideaCE/win/images/idea_CE.ico"
-      icoPathForEAP = "${communityHomeDir}/build/conf/ideaCE/win/images/idea_CE_EAP.ico"
-      installerImagesPath = "${communityHomeDir}/build/conf/ideaCE/win/images"
-      fileAssociations = listOf("java", "gradle", "groovy", "kt", "kts", "pom")
+      icoPath = "${communityHomeDir}/build/conf/KorgeForge/win/images/idea_CE.ico"
+      icoPathForEAP = "${communityHomeDir}/build/conf/KorgeForge/win/images/idea_CE_EAP.ico"
+      installerImagesPath = "${communityHomeDir}/build/conf/KorgeForge/win/images"
+      fileAssociations = listOf("gradle", "kt", "kts")
     }
 
-    override fun getFullNameIncludingEdition(appInfo: ApplicationInfoProperties) = "IntelliJ IDEA Community Edition"
+    override fun getFullNameIncludingEdition(appInfo: ApplicationInfoProperties) = "KorGE Forge"
 
-    override fun getFullNameIncludingEditionAndVendor(appInfo: ApplicationInfoProperties) = "IntelliJ IDEA Community Edition"
+    override fun getFullNameIncludingEditionAndVendor(appInfo: ApplicationInfoProperties) = "KorGE Forge"
 
     override fun getUninstallFeedbackPageUrl(appInfo: ApplicationInfoProperties): String {
-      return "https://www.jetbrains.com/idea/uninstall/?edition=IC-${appInfo.majorVersion}.${appInfo.minorVersion}"
+      return "https://forge.korge.org/uninstall/?edition=IC-${appInfo.majorVersion}.${appInfo.minorVersion}"
     }
   }
 
   protected open inner class CommunityLinuxDistributionCustomizer : LinuxDistributionCustomizer() {
     init {
-      iconPngPath = "${communityHomeDir}/build/conf/ideaCE/linux/images/icon_CE_128.png"
-      iconPngPathForEAP = "${communityHomeDir}/build/conf/ideaCE/linux/images/icon_CE_EAP_128.png"
-      snapName = "intellij-idea-community"
-      snapDescription =
-        "The most intelligent Java IDE. Every aspect of IntelliJ IDEA is specifically designed to maximize developer productivity. " +
-        "Together, powerful static code analysis and ergonomic design make development not only productive but also an enjoyable experience."
+      iconPngPath = "${communityHomeDir}/build/conf/KorgeForge/linux/images/icon_CE_128.png"
+      iconPngPathForEAP = "${communityHomeDir}/build/conf/KorgeForge/linux/images/icon_CE_EAP_128.png"
+      snapName = "korge-forge"
+      snapDescription = "KorGE Forge IDE to create VideoGames in Kotlin."
     }
 
-    override fun getRootDirectoryName(appInfo: ApplicationInfoProperties, buildNumber: String) = "idea-IC-$buildNumber"
+    override fun getRootDirectoryName(appInfo: ApplicationInfoProperties, buildNumber: String) = "korge-$buildNumber"
 
     override fun generateExecutableFilesPatterns(context: BuildContext, includeRuntime: Boolean, arch: JvmArchitecture): List<String> {
       return super.generateExecutableFilesPatterns(context, includeRuntime, arch)
@@ -148,21 +157,21 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
 
   protected open inner class CommunityMacDistributionCustomizer : MacDistributionCustomizer() {
     init {
-      icnsPath = "${communityHomeDir}/build/conf/ideaCE/mac/images/idea.icns"
-      icnsPathForEAP = "${communityHomeDir}/build/conf/ideaCE/mac/images/communityEAP.icns"
-      urlSchemes = listOf("idea")
+      icnsPath = "${communityHomeDir}/build/conf/KorgeForge/mac/images/idea.icns"
+      icnsPathForEAP = "${communityHomeDir}/build/conf/KorgeForge/mac/images/communityEAP.icns"
+      urlSchemes = listOf("korgeforge")
       associateIpr = true
-      fileAssociations = FileAssociation.from("java", "groovy", "kt", "kts")
-      bundleIdentifier = "com.jetbrains.intellij.ce"
-      dmgImagePath = "${communityHomeDir}/build/conf/ideaCE/mac/images/dmg_background.tiff"
+      fileAssociations = FileAssociation.from("kt", "kts")
+      bundleIdentifier = "org.korge.forge"
+      dmgImagePath = "${communityHomeDir}/build/conf/KorgeForge/mac/images/dmg_background.tiff"
     }
 
     override fun getRootDirectoryName(appInfo: ApplicationInfoProperties, buildNumber: String): String {
       return if (appInfo.isEAP) {
-        "IntelliJ IDEA ${appInfo.majorVersion}.${appInfo.minorVersionMainPart} CE EAP.app"
+        "KorGE Forge ${appInfo.majorVersion}.${appInfo.minorVersionMainPart} EAP.app"
       }
       else {
-        "IntelliJ IDEA CE.app"
+        "KorGE Forge.app"
       }
     }
 
@@ -175,10 +184,10 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
   }
 
   override fun getSystemSelector(appInfo: ApplicationInfoProperties, buildNumber: String): String {
-    return "IdeaIC${appInfo.majorVersion}.${appInfo.minorVersionMainPart}"
+    return "Korge${appInfo.majorVersion}.${appInfo.minorVersionMainPart}"
   }
 
-  override fun getBaseArtifactName(appInfo: ApplicationInfoProperties, buildNumber: String) = "ideaIC-$buildNumber"
+  override fun getBaseArtifactName(appInfo: ApplicationInfoProperties, buildNumber: String) = "korgeforge-$buildNumber"
 
-  override fun getOutputDirectoryName(appInfo: ApplicationInfoProperties) = "idea-ce"
+  override fun getOutputDirectoryName(appInfo: ApplicationInfoProperties) = "korgeforge"
 }

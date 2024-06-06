@@ -55,8 +55,8 @@ public class CodeInsightSettings implements PersistentStateComponent<Element>, C
     }
   }
 
-  public static final UINumericRange JAVADOC_INFO_DELAY_RANGE = new UINumericRange(500, 0, 5000);
-  public static final UINumericRange PARAMETER_INFO_DELAY_RANGE = new UINumericRange(1000, 0, 5000);
+  public static final UINumericRange JAVADOC_INFO_DELAY_RANGE = new UINumericRange(0, 0, 5000);
+  public static final UINumericRange PARAMETER_INFO_DELAY_RANGE = new UINumericRange(0, 0, 5000);
 
   public boolean SHOW_PARAMETER_NAME_HINTS_ON_COMPLETION;
   public boolean AUTO_POPUP_PARAMETER_INFO = true;
@@ -70,7 +70,7 @@ public class CodeInsightSettings implements PersistentStateComponent<Element>, C
    */
   @MagicConstant(intValues = {ALL, NONE, FIRST_LETTER})
   @Deprecated
-  public int COMPLETION_CASE_SENSITIVE = FIRST_LETTER;
+  public int COMPLETION_CASE_SENSITIVE = NONE;
 
   public int getCompletionCaseSensitive() {
     return COMPLETION_CASE_SENSITIVE;

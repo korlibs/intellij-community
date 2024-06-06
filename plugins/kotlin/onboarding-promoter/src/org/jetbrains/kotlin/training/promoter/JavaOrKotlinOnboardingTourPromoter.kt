@@ -33,7 +33,7 @@ class JavaOrKotlinOnboardingTourPromoter : OnboardingLessonPromoter(
     override fun createButton(): JComponent {
         val javaOnboardingAction = StartOnboardingAction(javaLanguageId, KotlinLessonsBundle.message("welcome.promo.start.tour.java"))
         val kotlinOnboardingAction = StartOnboardingAction(kotlinLanguageId, KotlinLessonsBundle.message("welcome.promo.start.tour.kotlin"))
-        val button = JBOptionButton(javaOnboardingAction, arrayOf(javaOnboardingAction, kotlinOnboardingAction)).also {
+        val button = JBOptionButton(kotlinOnboardingAction, arrayOf(kotlinOnboardingAction)).also {
             it.addSeparator = false
             it.showPopupYOffset = 1 // visually, it will be 4, because of the empty 3px bottom border of the button
             it.popupHandler = { StatisticBase.logOnboardingBannerSwitcherExpanded(lessonId) }

@@ -847,6 +847,7 @@
       <module fileurl="file://$PROJECT_DIR$/plugins/keymaps/visual-studio-for-mac-keymap/intellij.keymap.visualStudioForMac.iml" filepath="$PROJECT_DIR$/plugins/keymaps/visual-studio-for-mac-keymap/intellij.keymap.visualStudioForMac.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/keymaps/vscode-keymap/intellij.keymap.vscode.iml" filepath="$PROJECT_DIR$/plugins/keymaps/vscode-keymap/intellij.keymap.vscode.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/keymaps/xcode-keymap/intellij.keymap.xcode.iml" filepath="$PROJECT_DIR$/plugins/keymaps/xcode-keymap/intellij.keymap.xcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/korgeforge/intellij.korgeforge.iml" filepath="$PROJECT_DIR$/korgeforge/intellij.korgeforge.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/dev/intellij.kotlin.dev/intellij.kotlin.dev.iml" filepath="$PROJECT_DIR$/plugins/dev/intellij.kotlin.dev/intellij.kotlin.dev.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/devkit/intellij.kotlin.devkit/intellij.kotlin.devkit.iml" filepath="$PROJECT_DIR$/plugins/devkit/intellij.kotlin.devkit/intellij.kotlin.devkit.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/kotlin/gradle/multiplatform-tests-k2/intellij.kotlin.gradle.multiplatform-tests.k2.iml" filepath="$PROJECT_DIR$/plugins/kotlin/gradle/multiplatform-tests-k2/intellij.kotlin.gradle.multiplatform-tests.k2.iml" />
@@ -1255,6 +1256,7 @@
       <module fileurl="file://$PROJECT_DIR$/plugins/xslt-debugger/engine/impl/intellij.xslt.debugger.impl.rt.iml" filepath="$PROJECT_DIR$/plugins/xslt-debugger/engine/impl/intellij.xslt.debugger.impl.rt.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/xslt-debugger/engine/intellij.xslt.debugger.rt.iml" filepath="$PROJECT_DIR$/plugins/xslt-debugger/engine/intellij.xslt.debugger.rt.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/yaml/intellij.yaml.iml" filepath="$PROJECT_DIR$/plugins/yaml/intellij.yaml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/korge-intellij-plugin/korge-intellij-plugin.iml" filepath="$PROJECT_DIR$/korge-intellij-plugin/korge-intellij-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/kotlin/all-tests/kotlin.all-tests.iml" filepath="$PROJECT_DIR$/plugins/kotlin/all-tests/kotlin.all-tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/kotlin/base/analysis/kotlin.base.analysis.iml" filepath="$PROJECT_DIR$/plugins/kotlin/base/analysis/kotlin.base.analysis.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/kotlin/base/analysis-api-providers/kotlin.base.analysis-api-providers.iml" filepath="$PROJECT_DIR$/plugins/kotlin/base/analysis-api-providers/kotlin.base.analysis-api-providers.iml" />
