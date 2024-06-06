@@ -21,7 +21,7 @@ internal suspend fun createCommunityBuildContext(
                                         options = options)
 }
 
-open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIdeaProperties() {
+open class BaseIdeaCommunityProperties(private val communityHomeDir: Path) : BaseIdeaProperties() {
   companion object {
     val MAVEN_ARTIFACTS_ADDITIONAL_MODULES = persistentListOf(
       "intellij.tools.jps.build.standalone",
@@ -53,14 +53,15 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
       "intellij.idea.community.customization",
     )
     productLayout.bundledPluginModules = IDEA_BUNDLED_PLUGINS
-      .addAll(listOf("intellij.javaFX.community", "intellij.vcs.github.community"))
+      //.addAll(listOf("intellij.javaFX.community", "intellij.vcs.github.community"))
+      .addAll(listOf("intellij.vcs.github.community"))
       .toMutableList()
 
     productLayout.prepareCustomPluginRepositoryForPublishedPlugins = false
     productLayout.buildAllCompatiblePlugins = false
     productLayout.pluginLayouts = CommunityRepositoryModules.COMMUNITY_REPOSITORY_PLUGINS.addAll(listOf(
       JavaPluginLayout.javaPlugin(),
-      CommunityRepositoryModules.androidPlugin(allPlatforms = true),
+      //CommunityRepositoryModules.androidPlugin(allPlatforms = true),
       CommunityRepositoryModules.groovyPlugin(),
       CommunityRepositoryModules.githubPlugin("intellij.vcs.github.community"),
     ))
@@ -113,7 +114,7 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
       icoPath = "${communityHomeDir}/build/conf/ideaCE/win/images/idea_CE.ico"
       icoPathForEAP = "${communityHomeDir}/build/conf/ideaCE/win/images/idea_CE_EAP.ico"
       installerImagesPath = "${communityHomeDir}/build/conf/ideaCE/win/images"
-      fileAssociations = listOf("java", "gradle", "groovy", "kt", "kts", "pom")
+      //fileAssociations = listOf("java", "gradle", "groovy", "kt", "kts", "pom")
     }
 
     override fun getFullNameIncludingEdition(appInfo: ApplicationInfoProperties) = "IntelliJ IDEA Community Edition"

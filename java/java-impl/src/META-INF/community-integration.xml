@@ -34,7 +34,7 @@
                              bundle="messages.JavaUiBundle"
                              key="promo.configurable.profiler"/>
 
-    <moduleBuilder builderClass="com.intellij.ide.ultimatepromo.PromoSpringModuleBuilder"/>
+    <!--<moduleBuilder builderClass="com.intellij.ide.ultimatepromo.PromoSpringModuleBuilder"/>-->
 
     <registryKey key="idea.ultimate.features.hints.enabled"
                  defaultValue="true"

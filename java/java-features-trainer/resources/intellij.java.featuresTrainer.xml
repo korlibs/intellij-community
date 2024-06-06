@@ -1,4 +1,5 @@
 <idea-plugin>
+  <!--
   <dependencies>
     <plugin id="training"/>
   </dependencies>
@@ -10,4 +11,5 @@
   <extensions defaultExtensionNs="com.intellij">
     <lang.documentationProvider language="JAVA" implementationClass="com.intellij.java.featuresTrainer.onboarding.tips.JavaOnboardingTipsDocumentationProvider" order="first"/>
   </extensions>
+  -->
 </idea-plugin>
