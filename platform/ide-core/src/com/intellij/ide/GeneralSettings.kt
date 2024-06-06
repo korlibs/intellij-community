@@ -219,7 +219,7 @@ data class GeneralSettingsState(
   @JvmField
   var showTipsOnStartup: Boolean? = null,
   @JvmField
-  var reopenLastProject: Boolean = true,
+  var reopenLastProject: Boolean = false,
   @JvmField
   var autoSyncFiles: Boolean = true,
   @JvmField

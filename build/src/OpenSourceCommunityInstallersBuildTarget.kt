@@ -16,7 +16,7 @@ internal object OpenSourceCommunityInstallersBuildTarget {
       // do not bother external users about clean/incremental
       // just remove out/ directory for clean build
       incrementalCompilation = true
-      useCompiledClassesFromProjectOutput = false
+      useCompiledClassesFromProjectOutput = true
       buildStepsToSkip += BuildOptions.MAC_SIGN_STEP
     }
 
