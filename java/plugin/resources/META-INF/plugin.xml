@@ -37,7 +37,6 @@
 
   <content>
     <module name="intellij.java.structuralSearch"/>
-    <module name="intellij.java.featuresTrainer"/>
     <module name="intellij.java.performancePlugin"/>
     <module name="intellij.java.unscramble"/>
     <module name="intellij.java.vcs"/>

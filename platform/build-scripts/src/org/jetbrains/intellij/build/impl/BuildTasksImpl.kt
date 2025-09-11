@@ -738,8 +738,12 @@ private fun checkPluginModules(pluginModules: Collection<String>?, fieldName: St
   checkModules(pluginModules, fieldName, context)
 
   val unknownBundledPluginModules = pluginModules.filter { name ->
-    context.findModule(name)?.let { findFileInModuleSources(it, "META-INF/plugin.xml") } == null
-  }
+        context.findModule(name)?.let { module ->
+            val hasPluginXml = findFileInModuleSources(module, "META-INF/plugin.xml") != null
+            val hasExternalXml = findFileInModuleSources(module, "META-INF/plugin.xml.external") != null
+            hasPluginXml || hasExternalXml
+        } == false
+    }
   check(unknownBundledPluginModules.isEmpty()) {
     "The following modules from $fieldName don't contain META-INF/plugin.xml file and aren't specified as optional plugin modules" +
     "in productProperties.productLayout.pluginLayouts: ${unknownBundledPluginModules.joinToString()}."

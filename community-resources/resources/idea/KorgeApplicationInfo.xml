@@ -1,0 +1,12 @@
+<component xmlns="http://jetbrains.org/intellij/schema/application-info">
+  <version major="2024" minor="1.1"/>
+  <company name="KorGE" url="https://korge.org/"/>
+  <build number="KF-__BUILD__" date="__BUILD_DATE__" majorReleaseDate="20240404" />
+  <logo url="/korge_forge_logo.jpg"/>
+  <icon svg="/korge.svg" svg-small="/korge_16.svg"/>
+  <icon-eap svg="/korge.svg" svg-small="/korge_16.svg"/>
+  <names product="KORGE" fullname="KorGE Forge" edition="Fenix Edition" script="korge" motto="IDE for KorGE Game Engine"/>
+
+  <essential-plugin>com.intellij.java</essential-plugin>
+  <essential-plugin>com.intellij.java.ide</essential-plugin>
+</component>

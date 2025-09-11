@@ -18,7 +18,7 @@ internal suspend fun createCommunityBuildContext(
 ): BuildContext = BuildContextImpl.createContext(
   projectHome, IdeaCommunityProperties(COMMUNITY_ROOT.communityRoot), setupTracer = true, options = options)
 
-open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIdeaProperties() {
+open class BaseIdeaCommunityProperties(private val communityHomeDir: Path) : BaseIdeaProperties() {
   companion object {
     val MAVEN_ARTIFACTS_ADDITIONAL_MODULES: PersistentList<String> = persistentListOf(
       "intellij.tools.jps.build.standalone",
@@ -49,7 +49,6 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
       "intellij.idea.community.customization",
     )
     productLayout.bundledPluginModules = IDEA_BUNDLED_PLUGINS + sequenceOf(
-      "intellij.javaFX.community",
       "intellij.vcs.github.community",
       "intellij.vcs.gitlab.community"
     )
@@ -58,7 +57,7 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
     productLayout.buildAllCompatiblePlugins = false
     productLayout.pluginLayouts = CommunityRepositoryModules.COMMUNITY_REPOSITORY_PLUGINS.addAll(listOf(
       JavaPluginLayout.javaPlugin(),
-      CommunityRepositoryModules.androidPlugin(allPlatforms = true),
+//      CommunityRepositoryModules.androidPlugin(allPlatforms = true),
       CommunityRepositoryModules.groovyPlugin(),
     ))
 
@@ -135,7 +134,7 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : BaseIde
       icoPath = "${communityHomeDir}/build/conf/ideaCE/win/images/idea_CE.ico"
       icoPathForEAP = "${communityHomeDir}/build/conf/ideaCE/win/images/idea_CE_EAP.ico"
       installerImagesPath = "${communityHomeDir}/build/conf/ideaCE/win/images"
-      fileAssociations = listOf("java", "gradle", "groovy", "kt", "kts", "pom")
+//      fileAssociations = listOf("java", "gradle", "groovy", "kt", "kts", "pom")
     }
 
     override fun getFullNameIncludingEdition(appInfo: ApplicationInfoProperties): String = "IntelliJ IDEA Community Edition"

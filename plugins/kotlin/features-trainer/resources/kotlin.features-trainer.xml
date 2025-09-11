@@ -1,7 +1,6 @@
 <idea-plugin package="org.jetbrains.kotlin.training">
   <dependencies>
     <plugin id="training"/>
-    <module name="intellij.java.featuresTrainer"/>
   </dependencies>
 
   <extensions defaultExtensionNs="training">

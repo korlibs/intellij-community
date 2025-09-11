@@ -3,7 +3,6 @@
     <plugin id="org.jetbrains.kotlin"/>
     <plugin id="com.intellij.modules.idea"/>
     <module name="kotlin.features-trainer"/>
-    <module name="intellij.java.featuresTrainer"/>
   </dependencies>
 
   <extensions defaultExtensionNs="com.intellij">

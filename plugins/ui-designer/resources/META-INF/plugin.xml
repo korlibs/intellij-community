@@ -226,13 +226,5 @@
     <action id="GuiDesigner.GenerateMain" class="com.intellij.uiDesigner.actions.GenerateMainAction">
       <add-to-group anchor="after" group-id="GenerateGroup" relative-to-action="GenerateSuperMethodCall"/>
     </action>
-
-    <group id="GuiDesigner.NewActions" class="com.intellij.ide.actions.NonTrivialActionGroup">
-      <separator/>
-      <action id="NewForm" class="com.intellij.uiDesigner.actions.CreateFormAction" icon="AllIcons.FileTypes.UiForm"/>
-      <action id="NewDialog" class="com.intellij.uiDesigner.actions.CreateDialogAction" icon="AllIcons.General.Balloon"/>
-
-      <add-to-group group-id="NewGroup" anchor="last"/>
-    </group>
   </actions>
 </idea-plugin>
